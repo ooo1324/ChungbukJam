@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,11 +11,14 @@ public class SceneLoading : MonoBehaviour
 
     public void Click()
     {
-        StartCoroutine(LoadAsyncScene());
+        Debug.Log("1");
+        ManagementScene.Instance.UseCorutine();
+        // async
+        //StartCoroutine(LoadAsyncScene());
+        ManagementScene.Instance.EndCorutine();
     }
     IEnumerator LoadAsyncScene()
     {
-        //여기서 에러가 뜸.
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Single);
         asyncOperation.allowSceneActivation = false;
 

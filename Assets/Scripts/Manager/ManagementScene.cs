@@ -1,38 +1,68 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ManagementScene : Manager<ManagementScene>
 {
     [SerializeField]
-    private SpriteRenderer blackBoard;
-
-
+    private Canvas canvas;
+    private Image blackBoard;
+    private float waitTime;
     public override void init()
     {
-        blackBoard = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     public float fadeDuration = 1f;
 
     private void Start()
     {
-        blackBoard = GetComponent<SpriteRenderer>();
-        StartCoroutine(FadeOut());
+        if(canvas.transform.GetChild(0).TryGetComponent(out Image board))
+        {
+            blackBoard = board;
+        }
+        else
+        {
+            Debug.Log("error");
+        }
+    }
+    public void UseCorutine()
+    {
+        //blackBoard = GetComponent<SpriteRenderer>();
+        StartCoroutine(FadeInOut());
+    }
+    public void EndCorutine()
+    {
+        //StopCoroutine(FadeInOut());
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeInOut()
+    {
+        while (true)
+        {
+            // Fade out
+            yield return Fade(0f, 1f, fadeDuration);
+
+            // Wait
+            yield return new WaitForSeconds(waitTime);
+
+            // Fade in
+            yield return Fade(1f, 0f, fadeDuration);
+
+            // Wait
+            yield return new WaitForSeconds(waitTime);
+        }
+    }
+
+    private IEnumerator Fade(float startAlpha, float endAlpha, float duration)
     {
         float elapsedTime = 0f;
-        Color startColor = blackBoard.color;
+        Color color = blackBoard.color;
 
-        while (elapsedTime < fadeDuration)
+        while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            float alpha = Mathf.Lerp(startColor.a, 0f, elapsedTime / fadeDuration);
-            blackBoard.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
+            blackBoard.color = new Color(color.r, color.g, color.b, alpha);
             yield return null;
         }
     }

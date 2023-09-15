@@ -6,7 +6,7 @@ public class GameManager : Manager<GameManager>
 {
     public override void init()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     // Start is called before the first frame update
