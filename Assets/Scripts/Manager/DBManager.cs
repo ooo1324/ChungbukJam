@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager : MonoBehaviour
+public class DBManager : Manager<DBManager>
 {
+
     // Start is called before the first frame update
     void Start()
     {
