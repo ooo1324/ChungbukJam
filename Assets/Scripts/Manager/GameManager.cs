@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : Manager<GameManager>
+public class GameManager : Manager<GameManager>, IdontDestroy
 {
+    public void DoNotDestory()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     public override void init()
     {
         //throw new System.NotImplementedException();

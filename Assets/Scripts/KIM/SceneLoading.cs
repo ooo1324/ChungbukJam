@@ -14,12 +14,13 @@ public class SceneLoading : MonoBehaviour
         Debug.Log("1");
         ManagementScene.Instance.UseCorutine();
         // async
-        //StartCoroutine(LoadAsyncScene());
+        StartCoroutine(LoadAsyncScene());
         ManagementScene.Instance.EndCorutine();
     }
     IEnumerator LoadAsyncScene()
     {
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Single);
+
         asyncOperation.allowSceneActivation = false;
 
         while (!asyncOperation.isDone)

@@ -27,29 +27,35 @@ public class ManagementScene : Manager<ManagementScene>
     }
     public void UseCorutine()
     {
-        //blackBoard = GetComponent<SpriteRenderer>();
         StartCoroutine(FadeInOut());
     }
     public void EndCorutine()
     {
-        //StopCoroutine(FadeInOut());
+        StopCoroutine(FadeInOut());
     }
 
     private IEnumerator FadeInOut()
     {
         while (true)
         {
-            // Fade out
-            yield return Fade(0f, 1f, fadeDuration);
+            canvas.sortingOrder = 1;
+            float time = Time.time;
+            //// Fade out
+            //yield return Fade(0f, 1f, fadeDuration);
 
-            // Wait
-            yield return new WaitForSeconds(waitTime);
+            //// Wait
+            //yield return new WaitForSeconds(waitTime);
 
             // Fade in
             yield return Fade(1f, 0f, fadeDuration);
 
             // Wait
             yield return new WaitForSeconds(waitTime);
+            if (time > waitTime*2) 
+            {
+                canvas.sortingOrder = 0;
+                break;
+            }
         }
     }
 
@@ -60,6 +66,10 @@ public class ManagementScene : Manager<ManagementScene>
 
         while (elapsedTime < duration)
         {
+            if(Time.time > 10f)
+            {
+                Destroy(this);
+            }
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
             blackBoard.color = new Color(color.r, color.g, color.b, alpha);
