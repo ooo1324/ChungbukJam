@@ -23,6 +23,8 @@ public class DrawLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (DrawManager.Instance.currType != DrawManager.EDrawType.Paint) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             GameObject go = Instantiate(linePrefab);
