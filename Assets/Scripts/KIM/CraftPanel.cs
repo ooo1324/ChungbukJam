@@ -10,7 +10,10 @@ public class CraftPanel : MonoBehaviour
 {
     private HandiCraft handiCraft;
     private TextMeshProUGUI tmp;
-    [SerializeField] private Image handiImage;
+    [SerializeField]
+    private Image handiImage;
+    [SerializeField]
+    private Image effectImage;
     private Button reRoll;
     private Button ChooseButton;
     [SerializeField] 
@@ -18,9 +21,8 @@ public class CraftPanel : MonoBehaviour
     private void Start()
     {
         handiCraft = CraftDataManager.Instance.RandomHandieCrafts();
-        handiImage = transform.GetChild(0).GetComponent<Image>();
-        reRoll = transform.GetChild(1).GetComponent<Button>();
-        ChooseButton = transform.GetChild(2).GetComponent<Button>();
+        reRoll = transform.GetChild(2).GetComponent<Button>();
+        ChooseButton = transform.GetChild(3).GetComponent<Button>();
 
         reRoll.onClick.AddListener(() =>Reroll() );
         ChooseButton.onClick.AddListener(()=> ChooseCraft());
@@ -37,32 +39,16 @@ public class CraftPanel : MonoBehaviour
 
     private void ChooseCraft()
     {
-        if (handiCraft != null)
-        {
-            CraftDataManager.Instance.AddCraftList(handiCraft);
-            StartCoroutine(ScaleUIElement(menufactureCanvas.GetComponent<RectTransform>()));
+        Debug.Log(handiCraft);
+        CraftDataManager.Instance.AddCraftList(handiCraft);
+        StackUIManagement.Instance.AddStack(this.gameObject);
+        
+        //StartCoroutine(CraftDataManager.Instance.ScaleUIElement(menufactureCanvas.transform.GetChild(0).GetComponent<RectTransform>()));
 
-            menufactureCanvas.gameObject.SetActive(true);
-            //hide or remove
-        }
+        //menufactureCanvas.sortingOrder++;
+        //menufactureCanvas.gameObject.SetActive(true);
     }
 
 
-    public Vector3 targetScale = new Vector3(1.5f, 1.5f, 1f);
-    public float lerpDuration = 1f;
-
-    private IEnumerator ScaleUIElement(RectTransform uiElement)
-    {
-        Vector3 initialScale = uiElement.localScale;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < lerpDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            uiElement.localScale = Vector3.Lerp(initialScale, targetScale, elapsedTime / lerpDuration);
-            yield return null;
-        }
-
-        uiElement.localScale = targetScale;
-    }
+    
 }

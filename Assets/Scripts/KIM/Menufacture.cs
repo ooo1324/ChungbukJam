@@ -38,6 +38,7 @@ public class Menufacture : MonoBehaviour
         if (handiCraft != null && craftName != null)
         {
             CraftDataManager.Instance.AddCraftList(handiCraft);
+            StackUIManagement.Instance.AddStack(this.gameObject);
             // render texture use
             //hide or remove
         }

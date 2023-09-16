@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -36,8 +37,8 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
     public override void init()
     {
         DoNotDestory();
+        handiCraftsData = new List<HandiCraft>();
     }
-    
     public HandiCraft RandomHandieCrafts()
     {
         var prefixCount = Enum.GetNames(typeof(PrefixEnum)).Length;
