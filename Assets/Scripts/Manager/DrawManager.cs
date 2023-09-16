@@ -22,7 +22,7 @@ public class DrawManager : Manager<DrawManager>
     // Mouse Follow Stamp Object
     public GameObject stampObj;
 
-    public Slider slider; 
+    public Slider scaleSlider; 
     #endregion
 
     [SerializeField]
@@ -32,7 +32,7 @@ public class DrawManager : Manager<DrawManager>
     [HideInInspector]
     public GameObject currentObj;
 
-    DrawLine drawLine;
+    DrawPixelLine drawLine;
 
     [HideInInspector]
     public EDrawType currType;
@@ -42,6 +42,8 @@ public class DrawManager : Manager<DrawManager>
 
     private int currStampSpriteIdx;
 
+    [HideInInspector]
+    public bool isNoDrawLayer;
     public override void init()
     {
         currType = EDrawType.None;
@@ -51,12 +53,18 @@ public class DrawManager : Manager<DrawManager>
     void Start()
     {
         currStampSpriteIdx = 0;
-        drawLine = GetComponent<DrawLine>();
+        drawLine = GetComponent<DrawPixelLine>();
+        scaleSlider.onValueChanged.AddListener(delegate { OnChangeSliderValue(); });
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isNoDrawLayer)
+        {
+            
+            return;
+        }
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (currType == EDrawType.Eraser)
         {
@@ -133,8 +141,8 @@ public class DrawManager : Manager<DrawManager>
         CheckActiveObj();
     }
 
-    public void OnChangeSliderValue(float value)
+    public void OnChangeSliderValue()
     {
-        stampObj.transform.localScale = stampObj.transform.localScale * value;
+        stampObj.transform.localScale = new Vector3(scaleSlider.value, scaleSlider.value, scaleSlider.value);
     }
 }

@@ -8,10 +8,14 @@ public class DrawPixelLine : MonoBehaviour
 
     public GameObject squareObj;
 
+    [HideInInspector]
+    public Color lineColor;
+
     // Start is called before the first frame update
     void Start()
     {
         isDrawPaint = false;
+        lineColor = Color.white;
     }
 
     // Update is called once per frame
@@ -31,7 +35,11 @@ public class DrawPixelLine : MonoBehaviour
             isDrawPaint = false;
         }
 
-        if(isDrawPaint)
-            Instantiate(squareObj, pos, gameObject.transform.rotation);
+        if (isDrawPaint)
+        {
+            GameObject obj = Instantiate(squareObj, pos, gameObject.transform.rotation);
+            obj.GetComponent<SpriteRenderer>().color = lineColor;
+        }
+          
     }
 }
