@@ -1,9 +1,34 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 
+public enum PrefixEnum
+{
+    역동적인,
+    예술적인,
+    독특한,
+    정교한,
+    전통적인,
+    현대적인,
+    천상의,
+    결함있는,
+    사소한,
+
+
+    작은
+}
+
+public enum EffectEnum
+{
+    이글거리는,
+    빛나는,
+    번쩍이는
+}
+
+public enum CraftEnum
+{
+   
+}
 public class CraftsContainer : IDataLoader<HandiCraft>
 {
     public Crafts[] crafts = null;
@@ -49,4 +74,7 @@ public class Crafts
         handiCraft.SetInfo(craftName, makerName, prefix, effectPath, craftImage);
         return handiCraft;
     }
+
+
+
 }

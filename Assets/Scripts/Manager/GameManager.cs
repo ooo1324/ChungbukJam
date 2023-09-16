@@ -11,6 +11,7 @@ public class GameManager : Manager<GameManager>, IdontDestroy
 
     public override void init()
     {
+        DoNotDestory();
         //throw new System.NotImplementedException();
     }
 
