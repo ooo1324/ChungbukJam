@@ -26,7 +26,6 @@ public class DrawManager : Manager<DrawManager>
     // Mouse Follow Line Object
     public GameObject lineObj;
 
-    public Slider scaleSlider;
     #endregion
 
     [SerializeField]
@@ -49,8 +48,6 @@ public class DrawManager : Manager<DrawManager>
 
     bool isDrawPaint;
 
-    private int currStampSpriteIdx;
-
     public BoxCollider2D layerCollider;
 
     [HideInInspector]
@@ -64,11 +61,9 @@ public class DrawManager : Manager<DrawManager>
     // Start is called before the first frame update
     void Start()
     {
-        currStampSpriteIdx = 0;
         isDrawPaint = false;
         lineColor = Color.white;
         drawLine = GetComponent<DrawPixelLine>();
-        scaleSlider.onValueChanged.AddListener(delegate { OnChangeSliderValue(); });
     }
 
     // Update is called once per frame
@@ -242,8 +237,4 @@ public class DrawManager : Manager<DrawManager>
         CheckActiveObj();
     }
 
-    public void OnChangeSliderValue()
-    {
-        stampObj.transform.localScale = new Vector3(scaleSlider.value, scaleSlider.value, scaleSlider.value);
-    }
 }
