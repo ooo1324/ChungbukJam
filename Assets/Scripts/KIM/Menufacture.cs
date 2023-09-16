@@ -14,6 +14,8 @@ public class Menufacture : MonoBehaviour
     private TMP_InputField craftDescription;
     [SerializeField]
     private TMP_InputField maker;
+    [SerializeField]
+    private Canvas resultCanvas;
 
     private Button DestroyButton;
     private Button ExhibitionButton;
@@ -44,6 +46,8 @@ public class Menufacture : MonoBehaviour
 
             CraftDataManager.Instance.AddCraftList(handiCraft);
             StackUIManagement.Instance.AddStack(this.gameObject);
+
+            resultCanvas.transform.GetChild(0).gameObject.SetActive(true);
             // render texture use
             //hide or remove
         }

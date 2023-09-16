@@ -10,12 +10,12 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
     private List<HandiCraft> handiCraftsData = null;
     private HandiCraft currentCraft = null;
     string path = null;
-
-    public SpriteRenderer render;
-
     //public List<string> prefixList;
     //public List<GameObject> effectList;
     //public List<Sprite> imageList;
+
+    [SerializeField]
+    public SpriteRenderer render;
 
     PrefixEnum prefix;
     EffectEnum effect;

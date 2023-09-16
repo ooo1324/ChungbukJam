@@ -27,10 +27,12 @@ public class ManagementScene : Manager<ManagementScene>
     }
     public void UseCorutine()
     {
+        blackBoard.gameObject.SetActive(true);
         StartCoroutine(FadeInOut());
     }
     public void EndCorutine()
     {
+
         StopCoroutine(FadeInOut());
     }
 
@@ -38,7 +40,7 @@ public class ManagementScene : Manager<ManagementScene>
     {
         while (true)
         {
-            canvas.sortingOrder = 1;
+            canvas.sortingOrder = 10;
             float time = Time.time;
             //// Fade out
             //yield return Fade(0f, 1f, fadeDuration);
@@ -53,7 +55,8 @@ public class ManagementScene : Manager<ManagementScene>
             yield return new WaitForSeconds(waitTime);
             if (time > waitTime*2) 
             {
-                canvas.sortingOrder = 0;
+                blackBoard.gameObject.SetActive(false);
+                canvas.sortingOrder = -5;
                 break;
             }
         }

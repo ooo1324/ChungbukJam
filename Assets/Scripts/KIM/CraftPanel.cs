@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class CraftPanel : MonoBehaviour
 {
     private HandiCraft handiCraft;
-    private TextMeshProUGUI tmp;
+    //private TextMeshProUGUI tmp;
     [SerializeField]
     private Image handiImage;
     [SerializeField]
@@ -18,6 +18,9 @@ public class CraftPanel : MonoBehaviour
     private Button ChooseButton;
     [SerializeField] 
     private Canvas menufactureCanvas;
+
+    [SerializeField]
+    private Image render;
 
     [SerializeField]
     private Camera renderCam;
@@ -31,7 +34,7 @@ public class CraftPanel : MonoBehaviour
         ChooseButton.onClick.AddListener(()=> ChooseCraft());
     }
 
-    private IEnumerator Reroll()
+    private void Reroll()
     {
         var handiCraft = CraftDataManager.Instance.RandomHandieCrafts();
         Debug.Log($"{handiCraft} + {handiCraft.craftName} + {handiCraft.prefix} + {handiCraft.craftImage} + {handiCraft.effect}");
@@ -39,21 +42,19 @@ public class CraftPanel : MonoBehaviour
         this.handiCraft = handiCraft;
         handiImage.sprite = handiCraft.craftImage;
 
-        yield return null;
-
         CraftDataManager.Instance.render.sprite = Sprite.Create( CraftDataManager.Instance.GetTextureFromCamera(renderCam), new Rect(0,0,100,100)  ,new Vector2(0.5f,0.5f));
 
     }
 
-    private void OnGUI()
-    {
+    //private void OnGUI()
+    //{
         
 
-        if(GUI.Button(new Rect(10, 10, 100, 100), "asdfsa"))
-        {
-            Reroll();
-        }
-    }
+    //    if(GUI.Button(new Rect(10, 10, 100, 100), "asdfsa"))
+    //    {
+    //        Reroll();
+    //    }
+    //}
 
     private void ChooseCraft()
     {
