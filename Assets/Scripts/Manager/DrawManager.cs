@@ -22,6 +22,10 @@ public class DrawManager : Manager<DrawManager>
     // Mouse Follow Stamp Object
     public GameObject stampObj;
 
+    [SerializeField]
+    // Mouse Follow Line Object
+    public GameObject lineObj;
+
     public Slider scaleSlider;
     #endregion
 
@@ -40,6 +44,11 @@ public class DrawManager : Manager<DrawManager>
     [HideInInspector]
     public bool isErase;
 
+    [HideInInspector]
+    public Color lineColor;
+
+    bool isDrawPaint;
+
     private int currStampSpriteIdx;
 
     public BoxCollider2D layerCollider;
@@ -56,6 +65,8 @@ public class DrawManager : Manager<DrawManager>
     void Start()
     {
         currStampSpriteIdx = 0;
+        isDrawPaint = false;
+        lineColor = Color.white;
         drawLine = GetComponent<DrawPixelLine>();
         scaleSlider.onValueChanged.AddListener(delegate { OnChangeSliderValue(); });
     }
@@ -91,8 +102,88 @@ public class DrawManager : Manager<DrawManager>
 
             }
         }
+        else if (currType == EDrawType.Paint)
+        {
+            lineObj.transform.position = pos;
 
-        if(Input.GetAxis("Mouse Scroll"))
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                isDrawPaint = true;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                isDrawPaint = false;
+            }
+
+            if (isDrawPaint)
+            {
+                GameObject obj = Instantiate(lineObj, pos, gameObject.transform.rotation);
+                obj.GetComponent<SpriteRenderer>().color = lineColor;
+            }
+
+        }
+
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            GameObject obj = new GameObject();
+            float range = 1.8f;
+            
+            if (currType == EDrawType.Stamp)
+            {
+                obj = stampObj;
+            }
+            else if (currType == EDrawType.Paint)
+            {
+                obj = lineObj;
+                range = 0.7f;
+            }
+            else if (currType == EDrawType.Eraser)
+            {
+                obj = eraserObj;
+            }
+
+            if (obj == null) return;
+
+            float scaleValue = obj.transform.localScale.x + 0.1f;
+
+            if (scaleValue >= range) return;
+
+            //확대
+            obj.transform.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
+
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            GameObject obj = new GameObject();
+            float range = 0.2f;
+
+            if (currType == EDrawType.Stamp)
+            {
+                obj = stampObj;
+            }
+            else if (currType == EDrawType.Paint)
+            {
+                obj = lineObj;
+                range = 0.1f;
+            }
+            else if (currType == EDrawType.Eraser)
+            {
+                obj = eraserObj;
+            }
+
+            if (obj == null) return;
+
+            //축소
+            float scaleValue = obj.transform.localScale.x - 0.1f;
+
+            if (scaleValue <= range) return;
+
+            //확대
+            obj.transform.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
+        }
     }
 
     void CheckActiveObj()
@@ -102,18 +193,22 @@ public class DrawManager : Manager<DrawManager>
             case EDrawType.None:
                 eraserObj.SetActive(false);
                 stampObj.SetActive(false);
+                lineObj.SetActive(false);
                 break;
             case EDrawType.Paint:
                 eraserObj.SetActive(false);
                 stampObj.SetActive(false);
+                lineObj.SetActive(true);
                 break;
             case EDrawType.Stamp:
                 eraserObj.SetActive(false);
                 stampObj.SetActive(true);
+                lineObj.SetActive(false);
                 break;
             case EDrawType.Eraser:
                 eraserObj.SetActive(true);
                 stampObj.SetActive(false);
+                lineObj.SetActive(false);
                 break;
         }
     }
@@ -137,7 +232,8 @@ public class DrawManager : Manager<DrawManager>
 
     public void ChangeLineColor(Color color)
     {
-        drawLine.lineColor = color;
+        lineObj.GetComponent<SpriteRenderer>().color = color;
+        lineColor = color;
     }
 
     public void EraserBtClick()
