@@ -94,13 +94,11 @@ public class DrawManager : Manager<DrawManager>
             if (Input.GetMouseButtonDown(0))
             {
                 Instantiate(stampObj, pos, gameObject.transform.rotation);
-
             }
         }
         else if (currType == EDrawType.Paint)
         {
             lineObj.transform.position = pos;
-
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -116,7 +114,6 @@ public class DrawManager : Manager<DrawManager>
                 GameObject obj = Instantiate(lineObj, pos, gameObject.transform.rotation);
                 obj.GetComponent<SpriteRenderer>().color = lineColor;
             }
-
         }
 
 
@@ -206,6 +203,7 @@ public class DrawManager : Manager<DrawManager>
                 lineObj.SetActive(false);
                 break;
         }
+        UIManager.Instance.MenuSelect(currType);
     }
 
     public void StampBtClick()
