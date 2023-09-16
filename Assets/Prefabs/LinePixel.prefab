@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3333971246243277025}
   - component: {fileID: 2817297335577171411}
   - component: {fileID: 8974515970870526169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LinePixel
   m_TagString: Line
   m_Icon: {fileID: 0}
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3333971246243277054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4345, y: -0.4345, z: 0}
-  m_LocalScale: {x: 0.13105159, y: 0.13105159, z: 0.13105159}
+  m_LocalPosition: {x: -1.0200977, y: 0.89524984, z: 0}
+  m_LocalScale: {x: 0.63105154, y: 0.63105154, z: 0.63105154}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

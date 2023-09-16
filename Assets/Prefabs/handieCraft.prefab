@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1641637370912101719}
   - component: {fileID: 1641637370912101717}
   - component: {fileID: 1641637370912101718}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: prefix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1641637371012058290}
   - component: {fileID: 1641637371012058288}
   - component: {fileID: 1641637371012058289}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: handiImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 1641637371267063854}
   - component: {fileID: 1641637371267063852}
   - component: {fileID: 1641637371267063853}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: handiName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 1641637372072201235}
   - component: {fileID: 1641637372072201233}
   - component: {fileID: 1641637372072201234}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: maker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 819115605307380918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: handieCraft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
