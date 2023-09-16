@@ -7,7 +7,7 @@ public class HandiCraft
     public string craftName;
     public string makerName;
     public string prefix;
-    public GameObject effect;
+    public Sprite effect;
     public Sprite craftImage;
 
     public void SetInfo(string name, string maker, string prefix, string effectpath,string Imagepath)
@@ -15,7 +15,7 @@ public class HandiCraft
         craftName = name;
         makerName = maker;
         this.prefix = prefix;
-        effect = Resources.Load<GameObject>(effectpath);
+        effect = Resources.Load<Sprite>(effectpath);
         craftImage = Resources.Load<Sprite>(Imagepath);
     }
 }
