@@ -21,6 +21,8 @@ public class DrawPixelLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (DrawManager.Instance.isNoDrawLayer) return;
+
         if (DrawManager.Instance.currType != DrawManager.EDrawType.Paint)
             return;
 
