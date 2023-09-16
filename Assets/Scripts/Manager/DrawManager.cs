@@ -22,7 +22,7 @@ public class DrawManager : Manager<DrawManager>
     // Mouse Follow Stamp Object
     public GameObject stampObj;
 
-    public Slider scaleSlider; 
+    public Slider scaleSlider;
     #endregion
 
     [SerializeField]
@@ -42,8 +42,11 @@ public class DrawManager : Manager<DrawManager>
 
     private int currStampSpriteIdx;
 
+    public BoxCollider2D layerCollider;
+
     [HideInInspector]
     public bool isNoDrawLayer;
+
     public override void init()
     {
         currType = EDrawType.None;
@@ -60,12 +63,12 @@ public class DrawManager : Manager<DrawManager>
     // Update is called once per frame
     void Update()
     {
-        if (isNoDrawLayer)
-        {
-            
-            return;
-        }
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        isNoDrawLayer = !layerCollider.OverlapPoint(pos);
+
+        if (isNoDrawLayer) return;
+
+
         if (currType == EDrawType.Eraser)
         {
             if (Input.GetMouseButtonDown(0))
@@ -88,6 +91,8 @@ public class DrawManager : Manager<DrawManager>
 
             }
         }
+
+        if(Input.GetAxis("Mouse Scroll"))
     }
 
     void CheckActiveObj()
