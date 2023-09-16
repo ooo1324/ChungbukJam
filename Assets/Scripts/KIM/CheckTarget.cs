@@ -26,7 +26,7 @@ public class CheckTarget : MonoBehaviour
             {
                 if (result.gameObject.transform.parent.TryGetComponent(out HandiCraft craft))
                 {
-                    craft.SetInfo();
+                    //craft.SetInfo();
                 }
                 else
                 {

@@ -6,7 +6,6 @@ public abstract class Manager<T> : MonoBehaviour where T : Manager<T>
 {
     protected void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         init();
     }
 
