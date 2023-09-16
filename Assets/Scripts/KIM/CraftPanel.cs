@@ -18,6 +18,9 @@ public class CraftPanel : MonoBehaviour
     private Button ChooseButton;
     [SerializeField] 
     private Canvas menufactureCanvas;
+
+    [SerializeField]
+    private Camera renderCam;
     private void Start()
     {
         handiCraft = CraftDataManager.Instance.RandomHandieCrafts();
@@ -28,13 +31,28 @@ public class CraftPanel : MonoBehaviour
         ChooseButton.onClick.AddListener(()=> ChooseCraft());
     }
 
-    private void Reroll()
+    private IEnumerator Reroll()
     {
         var handiCraft = CraftDataManager.Instance.RandomHandieCrafts();
         Debug.Log($"{handiCraft} + {handiCraft.craftName} + {handiCraft.prefix} + {handiCraft.craftImage} + {handiCraft.effect}");
 
         this.handiCraft = handiCraft;
         handiImage.sprite = handiCraft.craftImage;
+
+        yield return null;
+
+        CraftDataManager.Instance.render.sprite = Sprite.Create( CraftDataManager.Instance.GetTextureFromCamera(renderCam), new Rect(0,0,100,100)  ,new Vector2(0.5f,0.5f));
+
+    }
+
+    private void OnGUI()
+    {
+        
+
+        if(GUI.Button(new Rect(10, 10, 100, 100), "asdfsa"))
+        {
+            Reroll();
+        }
     }
 
     private void ChooseCraft()

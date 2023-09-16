@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
 {
     private List<HandiCraft> handiCraftsData = null;
     private HandiCraft currentCraft = null;
     string path = null;
+
+    public SpriteRenderer render;
 
     //public List<string> prefixList;
     //public List<GameObject> effectList;
@@ -29,9 +32,9 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
         currentCraft = null;
     }
 
-    public List<HandiCraft> ReturnCraftsData()
+    public HandiCraft ReturnCraftsData()
     {
-        return handiCraftsData;
+        return currentCraft;
     }
     //json data parsing
     public override void init()
@@ -60,6 +63,32 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
         DontDestroyOnLoad(this);
     }
 
+
+    public string fileName = "UI_Screenshot.png";
+
+    public Texture2D GetTextureFromCamera(Camera camera)
+    {
+        RenderTexture prev = camera.targetTexture;
+        Rect rect = new Rect(600,300,camera.pixelWidth,camera.pixelHeight);
+
+        RenderTexture renderTexture = new RenderTexture(camera.pixelWidth, camera.pixelHeight, 24);
+        Texture2D screenshot = new Texture2D(camera.pixelWidth, camera.pixelHeight, TextureFormat.RGBA32, false);
+
+        camera.targetTexture = renderTexture;
+        camera.Render();
+
+        screenshot.ReadPixels(rect, 0, 0);
+        screenshot.Apply();
+
+        byte[] pngBytes = screenshot.EncodeToPNG();
+        File.WriteAllBytes(Path.Combine(Application.dataPath, fileName), pngBytes);
+        RenderTexture.active = renderTexture;
+
+        camera.targetTexture = prev;
+
+
+        return screenshot;
+    }
 }
 
 //public void SaveJson()

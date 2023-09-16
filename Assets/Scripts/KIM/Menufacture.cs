@@ -37,6 +37,11 @@ public class Menufacture : MonoBehaviour
     {
         if (handiCraft != null && craftName != null)
         {
+            var handiCraft = CraftDataManager.Instance.ReturnCraftsData();
+            handiCraft.makerName = maker.text;
+            handiCraft.craftName = craftName.text;
+            handiCraft.description = craftDescription.text;
+
             CraftDataManager.Instance.AddCraftList(handiCraft);
             StackUIManagement.Instance.AddStack(this.gameObject);
             // render texture use
