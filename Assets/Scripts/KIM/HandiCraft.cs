@@ -15,7 +15,7 @@ public class HandiCraft
         craftName = name;
         makerName = maker;
         this.prefix = prefix;
-        effect = Resources.Load(effectpath) as GameObject ?? new GameObject();
+        effect = Resources.Load<GameObject>(effectpath);
         craftImage = Resources.Load<Sprite>(Imagepath);
     }
 }

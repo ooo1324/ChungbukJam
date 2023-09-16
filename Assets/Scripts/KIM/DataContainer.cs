@@ -4,30 +4,29 @@ using System.Collections.Generic;
 
 public enum PrefixEnum
 {
-    역동적인,
-    예술적인,
-    독특한,
-    정교한,
-    전통적인,
-    현대적인,
-    천상의,
-    결함있는,
-    사소한,
-
-
-    작은
+    beautiful,
+    dynamic,
+    artistic,
+    unique,
+    elaborate,
+    traditional,
+    modern,
+    heavenly,
+    defective,
+    shimmering,
+    small
 }
 
 public enum EffectEnum
 {
-    이글거리는,
-    빛나는,
-    번쩍이는
+    effectPath
 }
-
+//blazing,
+//shining,
+//flashing
 public enum CraftEnum
 {
-   
+    imagePath
 }
 public class CraftsContainer : IDataLoader<HandiCraft>
 {
