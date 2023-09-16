@@ -69,6 +69,8 @@ public class UIManager : Manager<UIManager>
         {
             case DrawManager.EDrawType.None:
             case DrawManager.EDrawType.Eraser:
+                colorPanel.SetActive(false);
+                stampPanel.SetActive(false);
                 break;
             case DrawManager.EDrawType.Paint:
                 colorPanel.SetActive(true);

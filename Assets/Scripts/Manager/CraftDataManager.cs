@@ -86,7 +86,6 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
 
         camera.targetTexture = prev;
 
-
         return screenshot;
     }
 }

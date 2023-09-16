@@ -53,9 +53,16 @@ public class DrawManager : Manager<DrawManager>
     [HideInInspector]
     public bool isNoDrawLayer;
 
+    /// <summary>
+    /// µå·ÎÀ× °´Ã¼ ÀúÀå ¸®½ºÆ®
+    /// </summary>
+    [HideInInspector]
+    public List<GameObject> drawObjList;
+
     public override void init()
     {
         currType = EDrawType.None;
+        drawObjList = new List<GameObject>();
     }
 
     // Start is called before the first frame update
@@ -74,7 +81,6 @@ public class DrawManager : Manager<DrawManager>
 
         if (isNoDrawLayer) return;
 
-
         if (currType == EDrawType.Eraser)
         {
             if (Input.GetMouseButtonDown(0))
@@ -92,8 +98,10 @@ public class DrawManager : Manager<DrawManager>
             stampObj.transform.position = pos;
 
             if (Input.GetMouseButtonDown(0))
-            {
-                Instantiate(stampObj, pos, gameObject.transform.rotation);
+            {         
+                GameObject instObj =  Instantiate(stampObj, pos, Quaternion.Euler(0, 0, Random.Range(0f, 359f)));
+                
+                drawObjList.Add(instObj);
             }
         }
         else if (currType == EDrawType.Paint)
@@ -111,8 +119,9 @@ public class DrawManager : Manager<DrawManager>
 
             if (isDrawPaint)
             {
-                GameObject obj = Instantiate(lineObj, pos, gameObject.transform.rotation);
-                obj.GetComponent<SpriteRenderer>().color = lineColor;
+                GameObject instObj = Instantiate(lineObj, pos, gameObject.transform.rotation);
+                instObj.GetComponent<SpriteRenderer>().color = lineColor;
+                drawObjList.Add(instObj);
             }
         }
 
@@ -235,4 +244,11 @@ public class DrawManager : Manager<DrawManager>
         CheckActiveObj();
     }
 
+    public void AllDeleteBtClick()
+    {
+        for (int i = 0; i < drawObjList.Count; i++)
+            Destroy(drawObjList[i]);
+
+        drawObjList.Clear();
+    }
 }

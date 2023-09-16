@@ -15,7 +15,6 @@ public class ResultCraftData : MonoBehaviour
     [SerializeField] 
     private TextMeshProUGUI Maker;
 
-
     //when it activate
     private void OnEnable()
     {
@@ -30,4 +29,6 @@ public class ResultCraftData : MonoBehaviour
         description.text = handiCraft.description;
         Maker.text = handiCraft.makerName;
     }
+
+    
 }

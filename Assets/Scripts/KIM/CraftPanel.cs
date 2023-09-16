@@ -61,7 +61,11 @@ public class CraftPanel : MonoBehaviour
         Debug.Log(handiCraft);
         CraftDataManager.Instance.AddCraftList(handiCraft);
         StackUIManagement.Instance.AddStack(this.gameObject);
-        
+
+        // 그리기 씬에서 
+        SceneDataManager.Instance.SetHandiCraftSprite();
+
+
         //StartCoroutine(CraftDataManager.Instance.ScaleUIElement(menufactureCanvas.transform.GetChild(0).GetComponent<RectTransform>()));
 
         //menufactureCanvas.sortingOrder++;
