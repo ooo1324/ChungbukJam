@@ -19,7 +19,7 @@ public class SceneLoading : MonoBehaviour
     }
     IEnumerator LoadAsyncScene()
     {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("MainSceneOld", LoadSceneMode.Single);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Single);
 
         asyncOperation.allowSceneActivation = false;
 
