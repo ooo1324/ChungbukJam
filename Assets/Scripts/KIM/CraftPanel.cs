@@ -30,17 +30,19 @@ public class CraftPanel : MonoBehaviour
         reRoll = transform.GetChild(2).GetComponent<Button>();
         ChooseButton = transform.GetChild(3).GetComponent<Button>();
 
-        reRoll.onClick.AddListener(() =>Reroll() );
+        reRoll.onClick.AddListener(() =>StartCoroutine(Reroll()) );
         ChooseButton.onClick.AddListener(()=> ChooseCraft());
     }
 
-    private void Reroll()
+    private IEnumerator Reroll()
     {
         var handiCraft = CraftDataManager.Instance.RandomHandieCrafts();
         Debug.Log($"{handiCraft} + {handiCraft.craftName} + {handiCraft.prefix} + {handiCraft.craftImage} + {handiCraft.effect}");
 
         this.handiCraft = handiCraft;
         handiImage.sprite = handiCraft.craftImage;
+
+        yield return new WaitForEndOfFrame();
 
         CraftDataManager.Instance.render.sprite = Sprite.Create( CraftDataManager.Instance.GetTextureFromCamera(renderCam), new Rect(0,0,100,100)  ,new Vector2(0.5f,0.5f));
 
@@ -60,6 +62,7 @@ public class CraftPanel : MonoBehaviour
     {
 
         Debug.Log(handiCraft);
+        handiCraft.craftImage = null;
         CraftDataManager.Instance.AddCraftList(handiCraft);
         StackUIManagement.Instance.AddStack(gameObject.transform.parent.gameObject);
 

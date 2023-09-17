@@ -53,6 +53,7 @@ public class ManagementScene : Manager<ManagementScene>
 
             // Wait
             yield return new WaitForSeconds(waitTime);
+            blackBoard.gameObject.SetActive(false);
             if (time > waitTime*2) 
             {
                 blackBoard.gameObject.SetActive(false);
