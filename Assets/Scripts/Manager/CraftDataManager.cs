@@ -69,7 +69,7 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
     public Texture2D GetTextureFromCamera(Camera camera)
     {
         RenderTexture prev = camera.targetTexture;
-        Rect rect = new Rect(600,300,camera.pixelWidth,camera.pixelHeight);
+        Rect rect = new Rect(600, 300, camera.pixelWidth,camera.pixelHeight);
 
         RenderTexture renderTexture = new RenderTexture(camera.pixelWidth, camera.pixelHeight, 24);
         Texture2D screenshot = new Texture2D(camera.pixelWidth, camera.pixelHeight, TextureFormat.RGBA32, false);

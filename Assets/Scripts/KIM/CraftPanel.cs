@@ -58,9 +58,10 @@ public class CraftPanel : MonoBehaviour
 
     private void ChooseCraft()
     {
+
         Debug.Log(handiCraft);
         CraftDataManager.Instance.AddCraftList(handiCraft);
-        StackUIManagement.Instance.AddStack(this.gameObject);
+        StackUIManagement.Instance.AddStack(gameObject.transform.parent.gameObject);
 
         // 그리기 씬에서 
         SceneDataManager.Instance.SetHandiCraftSprite();

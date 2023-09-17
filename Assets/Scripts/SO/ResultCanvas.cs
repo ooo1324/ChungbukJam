@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class ResultCanvas : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void DisplayBtClick()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StackUIManagement.Instance.AddStack(gameObject);
     }
 }
