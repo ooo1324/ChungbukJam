@@ -17,7 +17,7 @@ public class DisplayManager : Manager<DisplayManager>
 
     private void Start()
     {
-        AddDisplayList();
+       // AddDisplayList();
     }
 
     void AddDisplayList()
