@@ -18,7 +18,7 @@ public class HandiCraft
         makerName = maker;
         this.prefix = prefix;
         this.description = "";
-        effect = Resources.Load<GameObject>(@"Assets\++1_Export\" + effectpath);
-        craftImage = Resources.Load<Sprite>(Imagepath);
+        effect = Resources.Load<GameObject>(@"effect\" + effectpath);
+        craftImage = Resources.Load<Sprite>(@"handicraft\" + Imagepath);
     }
 }
