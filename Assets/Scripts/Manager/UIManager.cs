@@ -70,8 +70,8 @@ public class UIManager : Manager<UIManager>
 
         Debug.Log(handi.craftImage + " image");
 
-        CraftDataManager.Instance.SetHandieDataNewer(handi);
         yield return new WaitForEndOfFrame();
+        CraftDataManager.Instance.SetHandieDataNewer(handi);
 
         menufactureCanvas.gameObject.SetActive(true);
 

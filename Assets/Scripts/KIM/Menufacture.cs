@@ -54,13 +54,15 @@ public class Menufacture : MonoBehaviour
         {
             var handiCraft = CraftDataManager.Instance.ReturnCraftsData();
             handiImage.sprite = handiCraft.craftImage;
+
+            handiImage.sprite = Resources.Load<Sprite>("result");
             handiCraft.makerName = maker.text;
             handiCraft.craftName = craftName.text;
             handiCraft.description = craftDescription.text;
 
             CraftDataManager.Instance.AddCraftList(handiCraft);
             resultCanvas.transform.GetChild(0).gameObject.SetActive(true);
-            StackUIManagement.Instance.AddStack(this.gameObject);
+            StackUIManagement.Instance.AddStack(this.gameObject.transform.parent.gameObject);
 
             // render texture use
             //hide or remove
