@@ -58,7 +58,7 @@ public class Menufacture : MonoBehaviour
 
             CraftDataManager.Instance.AddCraftList(handiCraft);
             resultCanvas.transform.GetChild(0).gameObject.SetActive(true);
-            StackUIManagement.Instance.AddStack(this.gameObject);
+            StackUIManagement.Instance.AddStack(this.gameObject.transform.parent.gameObject);
 
             // render texture use
             //hide or remove
