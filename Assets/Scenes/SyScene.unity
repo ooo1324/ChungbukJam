@@ -553,7 +553,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &171760283
@@ -5792,6 +5792,7 @@ MonoBehaviour:
   lineColor: {r: 0, g: 0, b: 0, a: 0}
   layerCollider: {fileID: 1879127261}
   isNoDrawLayer: 0
+  drawObjList: []
 --- !u!114 &1939755322
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -36,6 +36,12 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
     {
         return currentCraft;
     }
+
+    public List<HandiCraft> ReturnCraftsListData()
+    {
+        return handiCraftsData;
+    }
+
     //json data parsing
     public override void init()
     {
