@@ -93,7 +93,7 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
 
         byte[] pngBytes = screenshot.EncodeToPNG();
         
-        File.Delete(Path.Combine(Application.dataPath + "/Resources", fileName));
+        //File.Delete(Path.Combine(Application.dataPath + "/Resources", fileName));
         File.WriteAllBytes(Path.Combine(Application.dataPath + "/Resources", fileName), pngBytes);
         RenderTexture.active = renderTexture;
 
