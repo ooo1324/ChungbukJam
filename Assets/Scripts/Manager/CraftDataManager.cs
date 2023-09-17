@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -93,7 +94,9 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
 
         byte[] pngBytes = screenshot.EncodeToPNG();
 
-        //File.Delete(Path.Combine(Application.dataPath + "/Resources", fileName));
+        File.Delete(Path.Combine(Application.dataPath + "/Resources", fileName));
+        AssetDatabase.Refresh();
+        // it deleted and refresh later
         File.WriteAllBytes(Path.Combine(Application.dataPath + "/Resources", fileName), pngBytes);
         RenderTexture.active = renderTexture;
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -64,15 +65,18 @@ public class UIManager : Manager<UIManager>
     {
         yield return new WaitForEndOfFrame();
         CraftDataManager.Instance.GetTextureFromCamera(renderCam);
+        //yield return new WaitForEndOfFrame();
 
+
+        AssetDatabase.Refresh();
         var handi = CraftDataManager.Instance.ReturnCraftsData();
         handi.craftImage = Resources.Load<Sprite>("result");
 
         Debug.Log(handi.craftImage + " image");
 
-        yield return new WaitForEndOfFrame();
         CraftDataManager.Instance.SetHandieDataNewer(handi);
 
+        yield return new WaitForSeconds(0.2f);
         menufactureCanvas.gameObject.SetActive(true);
 
     }
