@@ -16,7 +16,6 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
 
     [SerializeField]
     public SpriteRenderer render;
-
     PrefixEnum prefix;
     EffectEnum effect;
     CraftEnum craft;
@@ -64,12 +63,12 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
     }
 
 
-    public string fileName = "UI_Screenshot.png";
+    public string fileName = "Result.png";
 
     public Texture2D GetTextureFromCamera(Camera camera)
     {
         RenderTexture prev = camera.targetTexture;
-        Rect rect = new Rect(600,300,camera.pixelWidth,camera.pixelHeight);
+        Rect rect = new Rect(300,200,camera.pixelWidth -600,camera.pixelHeight - 400);
 
         RenderTexture renderTexture = new RenderTexture(camera.pixelWidth, camera.pixelHeight, 24);
         Texture2D screenshot = new Texture2D(camera.pixelWidth, camera.pixelHeight, TextureFormat.RGBA32, false);
@@ -81,7 +80,7 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
         screenshot.Apply();
 
         byte[] pngBytes = screenshot.EncodeToPNG();
-        File.WriteAllBytes(Path.Combine(Application.dataPath, fileName), pngBytes);
+        File.WriteAllBytes(Path.Combine(Application.dataPath + "/Resources", fileName), pngBytes);
         RenderTexture.active = renderTexture;
 
         camera.targetTexture = prev;

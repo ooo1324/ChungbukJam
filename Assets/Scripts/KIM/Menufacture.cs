@@ -22,7 +22,7 @@ public class Menufacture : MonoBehaviour
 
     private void Start()
     {
-        handiCraft = CraftDataManager.Instance.RandomHandieCrafts();
+        
         DestroyButton = transform.GetChild(0).GetComponent<Button>();
         ExhibitionButton = transform.GetChild(1).GetComponent<Button>();
 
@@ -37,9 +37,12 @@ public class Menufacture : MonoBehaviour
 
     private void Exhibition()
     {
+        handiCraft = CraftDataManager.Instance.RandomHandieCrafts();
+        //handiCraft.craftImage = Resources.Load<Sprite>("Result.png");
         if (handiCraft != null && craftName != null)
         {
             var handiCraft = CraftDataManager.Instance.ReturnCraftsData();
+            handiImage.sprite = handiCraft.craftImage;
             handiCraft.makerName = maker.text;
             handiCraft.craftName = craftName.text;
             handiCraft.description = craftDescription.text;

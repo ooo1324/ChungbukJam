@@ -19,7 +19,27 @@ public enum PrefixEnum
 
 public enum EffectEnum
 {
-    effectPath
+    LightningMissileBlue,
+    LightningMissileGreen,
+    LightningMissilePink,
+    LightningMissileYellow,
+    LightningSoftMissileBlue,
+    LightningSoftMissileGreen,
+    LightningSoftMissilePink,
+    LightningSoftMissileYellow,
+    MagicAuraBlue,
+    MagicAuraGreen,
+    MagicAuraYellow,
+    MagicEnchantBlue,
+    MagicEnchantGreen,
+    MagicEnchantYellow,
+    MagicMissileBlue,
+    MagicMissileFire,
+    MagicMissileGreen,
+    MagicMissilePink,
+    MagicSphereBlue,
+    MagicSphereGreen,
+    MagicSphereYellow
 }
 //blazing,
 //shining,
