@@ -811,7 +811,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   render: {fileID: 0}
-  fileName: UI_Screenshot.png
 --- !u!114 &1265534022
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,10 @@ public class StackUIManagement : Manager<StackUIManagement>, IdontDestroy
     public Vector3 targetScale = new Vector3(1f, 1f, 1f);
     public float lerpDuration = 1f;
 
+    //public void AddStack()
+    //{
+
+    //}
 
     public void AddStack(GameObject gameObject)
     {

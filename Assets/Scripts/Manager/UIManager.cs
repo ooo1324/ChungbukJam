@@ -22,6 +22,15 @@ public class UIManager : Manager<UIManager>
     [SerializeField]
     public List<GameObject> colorMenuList;
 
+    [SerializeField]
+    private Button menufacture;
+
+    [SerializeField]
+    private Canvas menufactureCanvas;
+    [SerializeField]
+    private Camera renderCam;
+
+
     public override void init()
     {
        
@@ -44,6 +53,28 @@ public class UIManager : Manager<UIManager>
         {
             NextMenuFunc(1);
         });
+        menufacture.onClick.AddListener(() =>
+        {
+            StartCoroutine(Rendering());
+            
+        });
+    }
+
+    IEnumerator Rendering()
+    {
+        yield return new WaitForEndOfFrame();
+        CraftDataManager.Instance.GetTextureFromCamera(renderCam);
+
+        var handi = CraftDataManager.Instance.ReturnCraftsData();
+        handi.craftImage = Resources.Load<Sprite>("result");
+
+        Debug.Log(handi.craftImage + " image");
+
+        CraftDataManager.Instance.SetHandieDataNewer(handi);
+        yield return new WaitForEndOfFrame();
+
+        menufactureCanvas.gameObject.SetActive(true);
+
     }
 
     public void NextMenuFunc(int num)

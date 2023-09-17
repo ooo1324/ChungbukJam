@@ -1385,7 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3690,8 +3690,7 @@ MonoBehaviour:
   handiImage: {fileID: 803243472}
   effectImage: {fileID: 1160208452}
   menufactureCanvas: {fileID: 321789490}
-  render: {fileID: 0}
-  renderCam: {fileID: 0}
+  renderCam: {fileID: 519420031}
 --- !u!114 &579505290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6469,7 +6468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1054057118
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6935,7 +6934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!223 &1148441956
 Canvas:
   m_ObjectHideFlags: 0
@@ -11110,7 +11109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11655,6 +11654,9 @@ MonoBehaviour:
   - {fileID: 1930316079}
   - {fileID: 420935319}
   - {fileID: 1001656024}
+  menufacture: {fileID: 111123539}
+  menufactureCanvas: {fileID: 321789490}
+  renderCam: {fileID: 519420031}
 --- !u!1 &2013397333
 GameObject:
   m_ObjectHideFlags: 0

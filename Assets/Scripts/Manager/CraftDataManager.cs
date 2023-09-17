@@ -21,6 +21,10 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
     EffectEnum effect;
     CraftEnum craft;
 
+    public void SetHandieDataNewer(HandiCraft handi)
+    {
+        currentCraft = handi;
+    }
     public void AddCraftList(HandiCraft handi)
     {
         handiCraftsData.Add(handi);
@@ -47,6 +51,7 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
     {
         DoNotDestory();
         handiCraftsData = new List<HandiCraft>();
+        currentCraft = new HandiCraft();
     }
     public HandiCraft RandomHandieCrafts()
     {
@@ -70,15 +75,15 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
     }
 
 
-    public string fileName = "UI_Screenshot.png";
+    string fileName = "result.png";
 
     public Texture2D GetTextureFromCamera(Camera camera)
     {
         RenderTexture prev = camera.targetTexture;
-        Rect rect = new Rect(600, 300, camera.pixelWidth,camera.pixelHeight);
+        Rect rect = new Rect(75,0, 800,750);
 
         RenderTexture renderTexture = new RenderTexture(camera.pixelWidth, camera.pixelHeight, 24);
-        Texture2D screenshot = new Texture2D(camera.pixelWidth, camera.pixelHeight, TextureFormat.RGBA32, false);
+        Texture2D screenshot = new Texture2D(800, 750, TextureFormat.RGBA32, false);
 
         camera.targetTexture = renderTexture;
         camera.Render();
@@ -87,7 +92,7 @@ public class CraftDataManager : Manager<CraftDataManager>, IdontDestroy
         screenshot.Apply();
 
         byte[] pngBytes = screenshot.EncodeToPNG();
-        File.WriteAllBytes(Path.Combine(Application.dataPath, fileName), pngBytes);
+        File.WriteAllBytes(Path.Combine(Application.dataPath + "/Resources", fileName), pngBytes);
         RenderTexture.active = renderTexture;
 
         camera.targetTexture = prev;
