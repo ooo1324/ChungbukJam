@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,8 +17,11 @@ public class CraftPanel : MonoBehaviour
     [SerializeField] 
     private Canvas menufactureCanvas;
 
-    [SerializeField]
-    private Image render;
+    //[SerializeField]
+    //private Image sprite;
+
+    //[SerializeField]
+    //private Image render;
 
     [SerializeField]
     private Camera renderCam;
@@ -44,7 +45,7 @@ public class CraftPanel : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-        CraftDataManager.Instance.render.sprite = Sprite.Create( CraftDataManager.Instance.GetTextureFromCamera(renderCam), new Rect(0,0,100,100)  ,new Vector2(0.5f,0.5f));
+        //CraftDataManager.Instance.GetTextureFromCamera(renderCam);
 
     }
 
@@ -62,9 +63,11 @@ public class CraftPanel : MonoBehaviour
     {
 
         Debug.Log(handiCraft);
-        handiCraft.craftImage = null;
+        //handiCraft.craftImage = null;
         CraftDataManager.Instance.AddCraftList(handiCraft);
         StackUIManagement.Instance.AddStack(gameObject.transform.parent.gameObject);
+
+        //sprite.sprite = handiCraft.craftImage;
 
         // 그리기 씬에서 
         SceneDataManager.Instance.SetHandiCraftSprite();

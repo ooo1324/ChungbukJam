@@ -22,12 +22,21 @@ public class Menufacture : MonoBehaviour
 
     private void Start()
     {
-        
+
         DestroyButton = transform.GetChild(0).GetComponent<Button>();
         ExhibitionButton = transform.GetChild(1).GetComponent<Button>();
 
         DestroyButton.onClick.AddListener(() => DestoryCraft());
         ExhibitionButton.onClick.AddListener(() => Exhibition());
+    }
+
+    private void OnEnable()
+    {
+        handiCraft = CraftDataManager.Instance.ReturnCraftsData();
+        Debug.Log(handiCraft);
+        handiImage.sprite = handiCraft.craftImage;
+        Debug.Log(handiCraft.craftImage);
+        Debug.Log(handiCraft);
     }
 
     private void DestoryCraft()
@@ -37,7 +46,7 @@ public class Menufacture : MonoBehaviour
 
     private void Exhibition()
     {
-        handiCraft = CraftDataManager.Instance.RandomHandieCrafts();
+        handiCraft = CraftDataManager.Instance.ReturnCraftsData();
         //handiCraft.craftImage = Resources.Load<Sprite>("Result.png");
         if (handiCraft != null && craftName != null)
         {
@@ -48,9 +57,9 @@ public class Menufacture : MonoBehaviour
             handiCraft.description = craftDescription.text;
 
             CraftDataManager.Instance.AddCraftList(handiCraft);
+            resultCanvas.transform.GetChild(0).gameObject.SetActive(true);
             StackUIManagement.Instance.AddStack(this.gameObject);
 
-            resultCanvas.transform.GetChild(0).gameObject.SetActive(true);
             // render texture use
             //hide or remove
         }
