@@ -46,8 +46,6 @@ public class Menufacture : MonoBehaviour
 
     private void Exhibition()
     {
-
-
         handiCraft = CraftDataManager.Instance.ReturnCraftsData();
         //handiCraft.craftImage = Resources.Load<Sprite>("Result.png");
         if (handiCraft != null && craftName != null)

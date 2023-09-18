@@ -15,7 +15,6 @@ public class SceneLoading : MonoBehaviour
         ManagementScene.Instance.UseCorutine();
         // async
         StartCoroutine(LoadAsyncScene());
-        //ManagementScene.Instance.EndCorutine();
     }
     IEnumerator LoadAsyncScene()
     {
